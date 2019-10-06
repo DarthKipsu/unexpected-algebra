@@ -9,13 +9,13 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-http-to-https": "^1.1.4",
-    "node-fetch": "^2.6.0"
+    "workbox-cli": "^4.3.1"
   },
   "engines": {
     "node": "8.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/hello-express"
+    "url": "https://github.com/DarthKipsu/unexpected-algebra"
   },
   "license": "MIT",
   "keywords": [
