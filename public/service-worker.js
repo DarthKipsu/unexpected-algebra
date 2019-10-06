@@ -1,41 +1,36 @@
 "use strict";
 
-const CACHE_NAME = "static-cache-v1";
+importScripts(
+  "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js"
+);
 
-const FILES_TO_CACHE = ["/", "/views/index.html", "script/client.js"];
+// Reload initial page first from cache then revalidate.
+workbox.routing.registerRoute(
+  "/",
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "initial"
+  })
+);
 
-self.addEventListener("install", evt => {
-  evt.waitUntil(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.addAll(FILES_TO_CACHE);
-    })
-  );
+// Reload views, js and css first from cache then revalidate.
+workbox.routing.registerRoute(
+  /\.(?:js|css|html)$/,
+  new workbox.strategies.StaleWhileRevalidate({
+    cacheName: "static-resources"
+  })
+);
 
-  self.skipWaiting();
-});
-
-self.addEventListener("activate", evt => {
-  evt.waitUntil(
-    caches.keys().then(keyList => {
-      return Promise.all(
-        keyList.map(key => {
-          if (key !== CACHE_NAME) {
-            return caches.delete(key);
-          }
-        })
-      );
-    })
-  );
-
-  self.clients.claim();
-});
-
-self.addEventListener("fetch", evt => {
-  evt.respondWith(
-    caches.open(CACHE_NAME).then(cache => {
-      return cache.match(evt.request).then(response => {
-        return response || fetch(evt.request);
-      });
-    })
-  );
-});
+// Cache images for 30 days.
+workbox.routing.registerRoute(
+  /\.(?:png|gif|jpg|jpeg|webp|svg)$/,
+  new workbox.strategies.CacheFirst({
+    cacheName: "images",
+    plugins: [
+      new workbox.expiration.Plugin({
+        maxEntries: 50,
+        maxAgeSeconds: 30 * 24 * 60 * 60,
+        purgeOnQuotaError: true
+      })
+    ]
+  })
+);
