@@ -1,0 +1,33 @@
+{
+  "name": "KipsuFi",
+  "short_name": "KipsuFi",
+  "icons": [{
+    "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-128x128.png?v=1570364119052",
+      "sizes": "128x128",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-144x144.png?v=1570364113981",
+      "sizes": "144x144",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-152x152.png?v=1570364111332",
+      "sizes": "152x152",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-192x192.png?v=1570363968151",
+      "sizes": "192x192",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-256x256.png?v=1570364108849",
+      "sizes": "256x256",
+      "type": "image/png"
+    }, {
+      "src": "https://cdn.glitch.com/d735e52c-f605-4acf-b5fa-fa612e80b85e%2Ficon-512x512.png?v=1570363971288",
+      "sizes": "512x512",
+      "type": "image/png"
+    }],
+  "start_url": "/views/index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white"
+}
